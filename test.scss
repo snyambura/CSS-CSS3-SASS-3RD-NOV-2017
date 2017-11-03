@@ -1,3 +1,96 @@
 .black {
   color: #000;
 }
+
+//nesting
+
+nav {
+  margin-top: 20%;
+  ul {
+    margin-bottom: 50px;
+    margin-top: 30px;
+    padding: 30px;
+    padding-left: 30%;
+    list-style: none;
+    background-color: black;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+    font-family: "Comic Sans MS";
+  }
+}
+
+//mixin
+@mixin overlay() {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#image {
+  @include overlay();
+  opacity: 0.5;
+
+}
+
+$pink-color: #FD8698;
+
+
+//functions and operations
+
+@function height-function($a, $b){
+  @return $a + $b
+}
+
+#outer-box {
+  //width: width-function(200px, 100px);
+  height: width-function(200px, 100px);
+  display:block;
+  position:relative;
+  float: left;
+
+  img {
+    width: 600px;
+    height: auto;
+  }
+
+  #inner-box {
+    background: $pink-color;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding: 0;
+    transition: opacity .5s;
+
+    p {
+      color: #fff;
+      line-height: 150px;
+      font-family: 'arial';
+      text-align: center;
+    }
+  }
+
+  &:hover {
+    #inner-box {
+      opacity: .9;
+      transition: opacity .5s;
+    }
+  }
+}
+
+
+
+
+
+
+
